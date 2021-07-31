@@ -1,6 +1,16 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-const App = () => <h1>My React and TypeScript App!</h1>;
+import { globals } from './styles/global';
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const App = () => {
+  return (
+    <>
+      <nav>This is big boy nav</nav>
+      <main className={globals}>this is main</main>
+      <footer>this is footer</footer>
+    </>
+  );
+};
+
+ReactDOM.render(<App />, document.getElementById('root'));

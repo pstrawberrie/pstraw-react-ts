@@ -1,55 +1,76 @@
-import path from "path";
-import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
-import { Configuration as WebpackConfiguration } from "webpack";
-import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
+import path from 'path';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import webpack, { Configuration as WebpackConfiguration } from 'webpack';
+import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
 
 interface Configuration extends WebpackConfiguration {
   devServer?: WebpackDevServerConfiguration;
 }
 
-const isProd = process.env.NODE_ENV && process.env.NODE_ENV === "production";
+const dev = process.env.NODE_ENV !== 'production';
 
 const config: Configuration = {
-  mode: isProd ? "production" : "development",
-  entry: "./src/index.tsx",
+  mode: dev ? 'development' : 'production',
+  entry: './src/index.tsx',
   module: {
     rules: [
       {
         test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: [
-              "@babel/preset-env",
-              "@babel/preset-react",
-              "@babel/preset-typescript",
-            ],
+        use: [
+          { loader: 'babel-loader' },
+          {
+            loader: '@linaria/webpack-loader',
+            options: { sourceMap: dev },
           },
-        },
+        ],
+      },
+      {
+        test: /\.css$/,
+        use: [
+          { loader: MiniCssExtractPlugin.loader },
+          {
+            loader: 'css-loader',
+            options: { sourceMap: dev },
+          },
+        ],
+      },
+      {
+        test: /\.(jpg|png|gif|woff|woff2|eot|ttf|svg)$/,
+        use: [{ loader: 'file-loader' }],
       },
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
+    extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
-    path: path.resolve(__dirname, "build"),
-    filename: "bundle.js",
+    path: path.resolve(__dirname, 'build'),
+    filename: 'bundle.js',
   },
   devServer: {
-    contentBase: path.join(__dirname, "build"),
+    contentBase: path.join(__dirname, 'build'),
     compress: true,
     port: 4000,
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(dev ? 'development' : 'production'),
+      },
+    }),
+    new MiniCssExtractPlugin({ filename: 'bundle.css' }),
     new ForkTsCheckerWebpackPlugin({
       async: false,
       eslint: {
-        files: "./src/**/*",
+        files: './src/**/*',
       },
     }),
   ],
+  stats: {
+    children: true,
+  },
 };
 
 export default config;

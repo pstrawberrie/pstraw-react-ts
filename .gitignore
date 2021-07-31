@@ -108,3 +108,4 @@ _notes
 build/*.js
 build/*.css
 build/*.txt
+.linaria-cache
