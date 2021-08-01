@@ -28,6 +28,7 @@ const config: Configuration = {
       },
       {
         test: /\.css$/,
+        exclude: /node_modules/,
         use: [
           { loader: MiniCssExtractPlugin.loader },
           {
@@ -38,6 +39,7 @@ const config: Configuration = {
       },
       {
         test: /\.(jpg|png|gif|woff|woff2|eot|ttf|svg)$/,
+        exclude: /node_modules/,
         use: [{ loader: 'file-loader' }],
       },
     ],
@@ -68,9 +70,7 @@ const config: Configuration = {
       },
     }),
   ],
-  stats: {
-    children: true,
-  },
+  stats: 'minimal',
 };
 
 export default config;
