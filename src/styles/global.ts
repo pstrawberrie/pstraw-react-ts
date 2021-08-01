@@ -2,7 +2,7 @@ import { css } from '@linaria/core';
 import { reset } from './reset';
 import { colors, type } from './vars';
 
-export const globals = css`
+const globalStyles = css`
   :global() {
     ${reset}
 
@@ -11,5 +11,16 @@ export const globals = css`
       color: ${colors.light}
       background: ${colors.dark};
     }
+
+    a,
+    a:link,
+    a:visited,
+    a:hover,
+    a:active {
+      color: inherit;
+      text-decoration: none;
+    }
   }
 `;
+
+export default globalStyles;

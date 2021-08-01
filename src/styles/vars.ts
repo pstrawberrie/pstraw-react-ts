@@ -4,7 +4,17 @@
 export const colors = {
   light: '#eee',
   dark: '#222',
+
+  unique: {
+    topBar: '#3f3f3f',
+  },
 };
+
+/**
+ * Sizes
+ */
+export const siteMaxWidth = '1366px';
+export const sitePadding = '1rem';
 
 /**
  * Typography
