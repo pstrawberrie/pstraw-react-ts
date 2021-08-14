@@ -8,10 +8,10 @@ const Nav = (): JSX.Element => {
     <nav className={navStyles}>
       <div>
         <Link to="/">Parking Lot</Link>
-        <Link to="/spa/soft-drinks">Soft Drinks</Link>
-        <Link to="/spa/hard-drinks">Hard Drinks</Link>
-        <Link to="/spa/hot-dogs">Hot Dogs</Link>
-        <Link to="/spa/hamburgers">Hamburgers</Link>
+        <Link to="/apps/soft-drinks">Soft Drinks</Link>
+        <Link to="/apps/hard-drinks">Hard Drinks</Link>
+        <Link to="/apps/hot-dogs">Hot Dogs</Link>
+        <Link to="/apps/hamburgers">Hamburgers</Link>
       </div>
     </nav>
   );

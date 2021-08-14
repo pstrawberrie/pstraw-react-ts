@@ -32,7 +32,20 @@ export const fontSizes = {
 // Font Styles
 export const type = {
   default: `
-    font-family: Arial, sans-serif;
+    font-family: 'Oxygen', sans-serif;
     font-size: ${fontSizes.default};
+    line-height: 1.35;
   `,
+  alt: `
+    font-family: 'Ubuntu', sans-serif;
+    font-size: ${fontSizes.default};
+    font-weight: normal;
+    line-height: 1.18;
+  `,
+  title: `
+    font-family: 'Ubuntu', sans-serif;
+    font-size: ${fontSizes.lg};
+    font-weight: bold;
+    line-height: 1.18;
+  `
 };
