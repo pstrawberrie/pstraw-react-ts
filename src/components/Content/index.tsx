@@ -3,8 +3,12 @@ import { Switch, Route } from 'react-router-dom';
 import Modal, { useModal } from '../Modal';
 
 const Content = (): JSX.Element => {
-  const { isShowing, toggle } = useModal();
-  const { isShowing: secondShowing, toggle: secondToggle } = useModal();
+  const {
+    isShowing,
+    toggle,
+    isShowing: secondShowing,
+    toggle: secondToggle,
+  } = useModal();
 
   return (
     <main>

@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-// Global Styles just need to be referenced
-import globalStyles from './styles/global'; //eslint-disable-line
+import globalStyles from './styles/global';
 
 import Nav from './components/Nav';
 import Content from './components/Content';

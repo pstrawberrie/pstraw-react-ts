@@ -15,14 +15,15 @@ const Modal = ({
   hide,
   children,
 }: ModalProps): JSX.Element | null => {
+  // Close on ESC key press
   const handleEscKey = useCallback(
     (event) => {
-      console.log('esc key is hit'); //REMOVE
       if (event.keyCode === 27) hide();
     },
     [hide]
   );
 
+  // Close on outside click
   const handleOutsideClick = useCallback(
     (event) => {
       const insideClick = event.target.closest(`[data-ismodal]`);
